@@ -4,6 +4,7 @@ import { useState } from 'react';
 import LogoPersonal from '../assets/LogoPersonal.svg';
 import SantiagoEspImagen from '../assets/SantiagoEspImagen.pdf';
 import SantiagoEnImagen from '../assets/SantiagoEnImagen.pdf';
+import AnimatedBackground from './AnimatedBackground';
 
 const Hero = () => {
   const [emailCopied, setEmailCopied] = useState(false);
@@ -31,8 +32,15 @@ const Hero = () => {
     setCvMenuOpen(false);
   };
   return (
-    <section id="hero" className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 to-black">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+    <section id="hero" className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 to-black relative overflow-hidden">
+      {/* Animated Background */}
+      <AnimatedBackground 
+        opacity={0.15} 
+        speed={0.8}
+        zIndex={0}
+      />
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
         <div className="text-center">
           {/* Profile Image */}
           <motion.div

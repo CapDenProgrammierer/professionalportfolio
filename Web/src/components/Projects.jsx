@@ -1,57 +1,86 @@
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, ChevronRight, ExternalLink, Github, ArrowDown } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Github, ArrowDown } from 'lucide-react';
 import { useState } from 'react';
+import ProyectoPokemon from '../assets/ProyectoPokemon.jpg';
+import ProyectoJuego from '../assets/ProyectoJuego.png';
+import ProyectoMultas from '../assets/ProyectoMultas.jpg';
+import ProyectoMusica from '../assets/ProyectoMusica.jpg';
 
 const Projects = () => {
   const [currentProject, setCurrentProject] = useState(0);
   const [selectedProject, setSelectedProject] = useState(null);
 
-  // Plantilla de proyectos (se llenará con datos reales más adelante)
+  // Proyectos del portafolio
   const projects = [
     {
       id: 1,
-      title: 'Proyecto Ejemplo 1',
-      subtitle: 'Aplicación Web Full Stack',
-      image: '/placeholder-project-1.jpg', // Placeholder - se reemplazará con imagen real
-      description: 'Descripción detallada del primer proyecto. Explicación de funcionalidades, tecnologías utilizadas y objetivos alcanzados.',
-      technologies: ['React', 'Node.js', 'MongoDB', 'Express'],
+      title: 'Juego de Pokemon en Línea',
+      subtitle: 'Simulador de Batallas Pokemon',
+      image: ProyectoPokemon,
+      description: 'Juego de Pokemon sin licencia de Nintendo en línea para simular batallas de pokemon. Una experiencia interactiva que permite a los usuarios crear equipos personalizados y enfrentarse en batallas estratégicas simuladas, recreando la emoción de los combates Pokemon clásicos.',
+      technologies: ['JavaScript', 'HTML', 'MongoDB'],
       features: [
-        'Funcionalidad principal 1',
-        'Funcionalidad principal 2',
-        'Funcionalidad principal 3'
+        'Agregar usuarios para batallas',
+        'Crear equipo de Pokemones',
+        'Batalla Pokemon simulada'
       ],
       liveUrl: '#',
-      githubUrl: '#'
+      githubUrl: 'https://github.com/KendallCa05/PokemonGame'
     },
     {
       id: 2,
-      title: 'Proyecto Ejemplo 2',
-      subtitle: 'Aplicación Móvil',
-      image: '/placeholder-project-2.jpg', // Placeholder - se reemplazará con imagen real
-      description: 'Descripción detallada del segundo proyecto. Explicación de funcionalidades, tecnologías utilizadas y objetivos alcanzados.',
-      technologies: ['Unity', 'C#', 'Firebase'],
+      title: 'Kana Defence',
+      subtitle: 'Juego de tipo Tower Defence',
+      image: ProyectoJuego,
+      description: 'Juego de defensa donde tienes que evitar que el enemigo (las Kanas) lleguen al objetivo colocando defensas. Un desafiante tower defense que pone a prueba tu estrategia y planificación, donde cada decisión cuenta para proteger tu base de las oleadas enemigas.',
+      technologies: ['Godot', 'C#'],
       features: [
-        'Funcionalidad principal 1',
-        'Funcionalidad principal 2',
-        'Funcionalidad principal 3'
+        'Construir defensas de distintas clases',
+        'Economía de puntos por kill',
+        'Contador de puntuación'
       ],
       liveUrl: '#',
-      githubUrl: '#'
+      githubUrl: 'https://github.com/CapDenProgrammierer/ProyectoJuego'
     },
     {
       id: 3,
-      title: 'Proyecto Ejemplo 3',
-      subtitle: 'Sistema de Base de Datos',
-      image: '/placeholder-project-3.jpg', // Placeholder - se reemplazará con imagen real
-      description: 'Descripción detallada del tercer proyecto. Explicación de funcionalidades, tecnologías utilizadas y objetivos alcanzados.',
-      technologies: ['Java', 'Spring Boot', 'MySQL'],
+      title: 'Sistema de Multas',
+      subtitle: 'Sistema integral de gestión de multas de tránsito',
+      image: ProyectoMultas,
+      description: 'Sistema completo de gestión de multas de tránsito desarrollado como proyecto de la universidad, diseñado para digitalizar y modernizar el proceso de administración de infracciones vehiculares. La aplicación permite tanto a ciudadanos como a autoridades gestionar de manera eficiente todo el ciclo de vida de las multas, desde su creación hasta su resolución.',
+      technologies: ['ASP.NET', 'C#', 'SQL Server', 'HTML', 'CSS', 'JavaScript'],
       features: [
-        'Funcionalidad principal 1',
-        'Funcionalidad principal 2',
-        'Funcionalidad principal 3'
+        'Registro y gestión completa de usuarios ciudadanos y oficiales',
+        'Sistema de roles con diferentes niveles de acceso y permisos',
+        'Creación, asignación y seguimiento detallado de multas por cédula',
+        'Generación automática de reportes y estados de cuenta de multas',
+        'Mapa interactivo de calor mostrando concentración de infracciones',
+        'Sistema de seguridad con autenticación por lector de identidad',
+        'Panel administrativo para gestión de oficiales y estadísticas',
+        'Historial completo de transacciones y auditoría del sistema'
       ],
       liveUrl: '#',
-      githubUrl: '#'
+      githubUrl: 'https://github.com/NotFabianML/Proyecto2-GestionDeMultas-Frontend'
+    },
+    {
+      id: 4,
+      title: 'Proyecto Beatz',
+      subtitle: 'Aplicación completa de reproducción de música',
+      image: ProyectoMusica,
+      description: 'Aplicación de streaming de música desarrollada como proyecto académico, que ofrece una experiencia completa de reproducción musical. Permite a los usuarios gestionar su biblioteca personal de música, crear colecciones organizadas y disfrutar de reproducción de alta calidad con todas las funcionalidades de un reproductor profesional.',
+      technologies: ['React', 'C#', 'ASP.NET', 'SQL Server', 'JavaScript', 'MP3 Player API'],
+      features: [
+        'Sistema de usuarios con perfiles personalizados y bibliotecas individuales',
+        'Carga y gestión de archivos de música en múltiples formatos',
+        'Creación y organización de playlists personalizadas',
+        'Gestión completa de álbumes con metadatos y artwork',
+        'Reproductor de música con controles avanzados y audio real',
+        'Sistema de búsqueda y filtrado por artista, álbum y género',
+        'Interfaz intuitiva y responsive para una experiencia óptima',
+        'Almacenamiento seguro y organizado de la biblioteca musical'
+      ],
+      liveUrl: '#',
+      githubUrl: 'https://github.com/CapDenProgrammierer/MusicApp'
     }
   ];
 
@@ -113,12 +142,20 @@ const Projects = () => {
                 className="relative"
               >
                 {/* Project Image */}
-                <div className="relative h-96 bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center cursor-pointer"
+                <div className="relative h-96 bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center cursor-pointer overflow-hidden"
                      onClick={() => handleProjectClick(projects[currentProject])}>
-                  {/* Placeholder for project image */}
-                  <div className="text-6xl text-[#ff2909] opacity-50">
-                    📱
-                  </div>
+                  {/* Project Image */}
+                  {projects[currentProject].image && projects[currentProject].image !== '/placeholder-project-1.jpg' ? (
+                    <img 
+                      src={projects[currentProject].image} 
+                      alt={projects[currentProject].title}
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <div className="text-6xl text-[#ff2909] opacity-50">
+                      📱
+                    </div>
+                  )}
                   
                   {/* Overlay */}
                   <div className="absolute inset-0 bg-black/40 opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
@@ -225,25 +262,16 @@ const Projects = () => {
                     </div>
                   </div>
 
-                  {/* Action Buttons */}
+                  {/* Action Button */}
                   <div className="flex gap-4">
-                    <a
-                      href={selectedProject.liveUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 bg-gradient-to-r from-[#09dfff] to-[#0964ff] text-black px-6 py-3 rounded-lg font-semibold hover:shadow-lg hover:shadow-[#09dfff]/30 transition-all duration-300"
-                    >
-                      <ExternalLink size={18} />
-                      Ver Proyecto
-                    </a>
                     <a
                       href={selectedProject.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-2 border-2 border-[#0964ff] text-[#09dfff] px-6 py-3 rounded-lg font-semibold hover:bg-[#0964ff]/10 hover:border-[#09dfff] transition-all duration-300"
+                      className="flex items-center gap-2 bg-gradient-to-r from-[#09dfff] to-[#0964ff] text-black px-6 py-3 rounded-lg font-semibold hover:shadow-lg hover:shadow-[#09dfff]/30 transition-all duration-300"
                     >
                       <Github size={18} />
-                      Código
+                      Ver Código
                     </a>
                   </div>
                 </div>
