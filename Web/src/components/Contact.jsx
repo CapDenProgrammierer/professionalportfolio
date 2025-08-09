@@ -2,8 +2,10 @@ import { motion } from 'framer-motion';
 import { Mail, MessageCircle } from 'lucide-react';
 import { useState, useRef } from 'react';
 import emailjs from '@emailjs/browser';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const Contact = () => {
+  const { t, language } = useLanguage();
   const form = useRef();
   const [isLoading, setIsLoading] = useState(false);
   const [message, setMessage] = useState({ text: '', type: '' });
@@ -26,14 +28,14 @@ const Contact = () => {
       .then(
         () => {
           setMessage({
-            text: '¡Mensaje enviado exitosamente! Te responderé pronto.',
+            text: t('contact.success'),
             type: 'success'
           });
           form.current.reset();
         },
         (error) => {
           setMessage({
-            text: 'Error al enviar el mensaje. Por favor intenta de nuevo.',
+            text: t('contact.error'),
             type: 'error'
           });
           console.log('Error:', error.text);
@@ -49,7 +51,7 @@ const Contact = () => {
   };
 
   const openWhatsApp = () => {
-    const message = encodeURIComponent('¡Hola Santiago! Me interesa contactarte desde tu portafolio web.');
+    const message = encodeURIComponent(t('contact.whatsappMessage'));
     const whatsappURL = `https://wa.me/${WHATSAPP_NUMBER}?text=${message}`;
     window.open(whatsappURL, '_blank');
   };
@@ -65,10 +67,10 @@ const Contact = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-8 bg-gradient-to-r from-[#09dfff] to-[#0964ff] bg-clip-text text-transparent">
-            Contacto
+            {t('contact.title')}
           </h2>
           <p className="text-lg text-gray-300 max-w-2xl mx-auto">
-            ¿Tienes un proyecto en mente? ¡Hablemos! Completa el formulario y te responderé pronto.
+            {t('contact.description')}
           </p>
         </motion.div>
 
@@ -82,7 +84,7 @@ const Contact = () => {
         >
           <div className="bg-black/40 backdrop-blur-sm border border-[#0964ff]/20 rounded-2xl p-8">
             <h3 className="text-2xl font-bold text-white mb-8 text-center">
-              Ponte en contacto
+              {t('contact.getInTouch')}
             </h3>
             
             <form ref={form} onSubmit={sendEmail} className="space-y-6">
@@ -92,7 +94,7 @@ const Contact = () => {
                   <input
                     type="text"
                     name="from_name"
-                    placeholder="Nombre"
+                    placeholder={t('contact.form.firstName')}
                     required
                     className="w-full px-4 py-3 bg-[#0964ff]/10 border border-[#0964ff]/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-[#09dfff] focus:bg-[#0964ff]/20 transition-all duration-300"
                   />
@@ -101,7 +103,7 @@ const Contact = () => {
                   <input
                     type="text"
                     name="from_lastname"
-                    placeholder="Apellido"
+                    placeholder={t('contact.form.lastName')}
                     required
                     className="w-full px-4 py-3 bg-[#0964ff]/10 border border-[#0964ff]/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-[#09dfff] focus:bg-[#0964ff]/20 transition-all duration-300"
                   />
@@ -114,7 +116,7 @@ const Contact = () => {
                   <input
                     type="email"
                     name="from_email"
-                    placeholder="Email"
+                    placeholder={t('contact.form.email')}
                     required
                     className="w-full px-4 py-3 bg-[#0964ff]/10 border border-[#0964ff]/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-[#09dfff] focus:bg-[#0964ff]/20 transition-all duration-300"
                   />
@@ -123,7 +125,7 @@ const Contact = () => {
                   <input
                     type="tel"
                     name="from_phone"
-                    placeholder="Teléfono"
+                    placeholder={t('contact.form.phone')}
                     className="w-full px-4 py-3 bg-[#0964ff]/10 border border-[#0964ff]/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-[#09dfff] focus:bg-[#0964ff]/20 transition-all duration-300"
                   />
                 </div>
@@ -134,7 +136,7 @@ const Contact = () => {
                 <input
                   type="text"
                   name="from_address"
-                  placeholder="Dirección"
+                  placeholder={t('contact.form.address')}
                   className="w-full px-4 py-3 bg-[#0964ff]/10 border border-[#0964ff]/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-[#09dfff] focus:bg-[#0964ff]/20 transition-all duration-300"
                 />
               </div>
@@ -144,7 +146,7 @@ const Contact = () => {
                 <textarea
                   rows="6"
                   name="message"
-                  placeholder="Escribe tu mensaje aquí"
+                  placeholder={t('contact.form.message')}
                   required
                   className="w-full px-4 py-3 bg-[#0964ff]/10 border border-[#0964ff]/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-[#09dfff] focus:bg-[#0964ff]/20 transition-all duration-300 resize-vertical"
                 ></textarea>
@@ -176,7 +178,7 @@ const Contact = () => {
                       : 'hover:shadow-lg hover:shadow-[#09dfff]/30'
                   }`}
                 >
-                  {isLoading ? 'Enviando...' : 'Enviar'}
+                  {isLoading ? t('contact.form.sending') : t('contact.form.send')}
                 </button>
               </div>
             </form>
@@ -214,7 +216,7 @@ const Contact = () => {
             </div>
             <h4 className="text-lg font-bold text-white mb-2">WhatsApp</h4>
             <p className="text-[#25d366] font-mono text-sm">+506 8394-0269</p>
-            <p className="text-gray-400 text-xs mt-2">Haz clic para chatear</p>
+            <p className="text-gray-400 text-xs mt-2">{t('contact.whatsappText')}</p>
           </motion.div>
         </div>
       </div>

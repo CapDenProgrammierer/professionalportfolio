@@ -5,8 +5,10 @@ import LogoPersonal from '../assets/LogoPersonal.svg';
 import SantiagoEspImagen from '../assets/SantiagoEspImagen.pdf';
 import SantiagoEnImagen from '../assets/SantiagoEnImagen.pdf';
 import AnimatedBackground from './AnimatedBackground';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const Hero = () => {
+  const { t, language } = useLanguage();
   const [emailCopied, setEmailCopied] = useState(false);
   const [cvMenuOpen, setCvMenuOpen] = useState(false);
 
@@ -57,14 +59,19 @@ const Hero = () => {
           </motion.div>
 
           {/* Name and Title */}
-          <motion.h1
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-4xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-[#09dfff] to-[#0964ff] bg-clip-text text-transparent"
+            className="mb-4"
           >
-            Santiago Astua
-          </motion.h1>
+            <p className="text-xl text-[#09dfff] mb-2">
+              {t('hero.greeting')}
+            </p>
+            <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-[#09dfff] to-[#0964ff] bg-clip-text text-transparent">
+              {t('hero.name')}
+            </h1>
+          </motion.div>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -72,7 +79,7 @@ const Hero = () => {
             transition={{ duration: 0.5, delay: 0.4 }}
             className="text-xl md:text-2xl text-[#09dfff] mb-8 font-semibold"
           >
-            Desarrollador Full Stack & Ingeniero de Software
+            {t('hero.title')}
           </motion.p>
 
           {/* Description */}
@@ -82,7 +89,7 @@ const Hero = () => {
             transition={{ duration: 0.5, delay: 0.6 }}
             className="text-lg text-white mb-10 max-w-2xl mx-auto font-medium"
           >
-            Coding into the Future
+            {t('hero.slogan')}
           </motion.p>
 
           {/* CTA Buttons */}
@@ -99,7 +106,7 @@ const Hero = () => {
               className="bg-gradient-to-r from-[#09dfff] to-[#0964ff] text-black px-8 py-3 rounded-lg font-bold hover:shadow-lg hover:shadow-[#09dfff]/30 transition-all duration-300 flex items-center justify-center gap-2"
             >
               <Mail size={20} />
-              Contáctame
+              {t('hero.contactMe')}
             </motion.a>
             <motion.div
               className="relative"
@@ -112,7 +119,7 @@ const Hero = () => {
                 className="border-2 border-[#0964ff] text-[#09dfff] bg-black/30 backdrop-blur-sm px-8 py-3 rounded-lg font-bold hover:bg-[#0964ff]/10 hover:border-[#09dfff] transition-all duration-300 flex items-center justify-center gap-2"
               >
                 <Download size={20} />
-                Descargar CV
+                {t('hero.downloadCv')}
                 <ChevronDown size={16} className={`transition-transform duration-200 ${cvMenuOpen ? 'rotate-180' : ''}`} />
               </motion.button>
 
@@ -186,7 +193,7 @@ const Hero = () => {
                   exit={{ opacity: 0, y: 10 }}
                   className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-green-600 text-white text-xs px-2 py-1 rounded-md whitespace-nowrap z-10"
                 >
-                  Correo copiado al portapapeles
+                  {t('hero.emailCopied')}
                 </motion.div>
               )}
             </motion.a>

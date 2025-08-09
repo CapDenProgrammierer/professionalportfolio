@@ -1,31 +1,33 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { User, Heart, Globe, GraduationCap, X } from 'lucide-react';
 import { useState } from 'react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const About = () => {
+  const { t } = useLanguage();
   const [hoveredValue, setHoveredValue] = useState(null);
   const [selectedValue, setSelectedValue] = useState(null);
 
   const valores = [
     {
-      title: 'Responsabilidad',
+      title: t('about.values.innovation'),
       icon: '💼',
-      description: 'Dedicar tiempo y esfuerzo a aprender y masterizar. Cada momento invertido en el crecimiento profesional es una inversión en la excelencia y el dominio de las habilidades técnicas.'
+      description: t('about.values.innovationDesc')
     },
     {
-      title: 'Empatía',
+      title: t('about.values.excellence'), 
       icon: '❤️',
-      description: 'Trabajar en conjunto con personas y ser abierto a ideas de toda fuente. La colaboración efectiva nace de escuchar, comprender y valorar las perspectivas de cada miembro del equipo.'
+      description: t('about.values.excellenceDesc')
     },
     {
-      title: 'Compromiso',
-      icon: '🎯',
-      description: 'Aprender con determinación sobre el desarrollo del software y tecnologías actuales y ancestrales. La pasión por el conocimiento tecnológico impulsa la innovación y el crecimiento constante.'
+      title: t('about.values.collaboration'),
+      icon: '🎯', 
+      description: t('about.values.collaborationDesc')
     },
     {
-      title: 'Humildad',
+      title: t('about.values.humility'),
       icon: '🙏',
-      description: 'Siempre pensar en el beneficio mutuo con el público y compañeros. El verdadero éxito se construye cuando todos los involucrados crecen y se benefician del trabajo en conjunto.'
+      description: t('about.values.humilityDesc')
     }
   ];
 
@@ -41,7 +43,7 @@ const About = () => {
             viewport={{ once: true }}
             className="text-4xl md:text-5xl font-bold mb-8 bg-gradient-to-r from-[#09dfff] to-[#0964ff] bg-clip-text text-transparent"
           >
-            ¿Quién Soy?
+            {t('about.title')}
           </motion.h2>
 
           {/* Main Description */}
@@ -53,9 +55,7 @@ const About = () => {
             className="max-w-4xl mx-auto"
           >
             <p className="text-lg md:text-xl text-white leading-relaxed mb-8">
-              Ingeniero en Software y amante de la tecnología. Aspirante a creador de software independiente 
-              y ayudar a crear sistemas tecnológicos. Nacido originario de Costa Rica y Graduado de la 
-              Universidad CENFOTEC. Explorando mis límites.
+              {t('about.description')}
             </p>
           </motion.div>
 
@@ -89,7 +89,7 @@ const About = () => {
             viewport={{ once: true }}
           >
             <h3 className="text-2xl md:text-3xl font-bold mb-8 text-[#09dfff]">
-              Valores
+              {t('about.valuesTitle')}
             </h3>
             
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto relative">
@@ -111,7 +111,7 @@ const About = () => {
                   >
                     <div className="text-3xl mb-3">{valor.icon}</div>
                     <h4 className="text-lg font-semibold text-white">{valor.title}</h4>
-                    <p className="text-xs text-gray-400 mt-2 md:hidden">Toca para ver más</p>
+                    <p className="text-xs text-gray-400 mt-2 md:hidden">{t('about.tapForMore')}</p>
                   </motion.div>
 
                   {/* Desktop Tooltip */}
@@ -200,11 +200,11 @@ const About = () => {
                 className="mb-16"
               >
                 <h3 className="text-2xl md:text-3xl font-bold mb-6 text-[#09dfff] text-left">
-                  Misión
+                  {t('about.missionTitle')}
                 </h3>
                 <div className="bg-black/30 backdrop-blur-sm border border-[#0964ff]/20 rounded-xl p-8 hover:border-[#09dfff]/40 transition-all duration-300">
                   <p className="text-lg text-white leading-relaxed text-left">
-                    Desarrollar habilidades excepcionales y útiles que ayuden a la creación de tecnologías y participar en investigaciones y desarrollo de software innovador.
+                    {t('about.mission')}
                   </p>
                 </div>
               </motion.div>
@@ -217,11 +217,11 @@ const About = () => {
                 viewport={{ once: true }}
               >
                 <h3 className="text-2xl md:text-3xl font-bold mb-6 text-[#09dfff] text-left">
-                  Objetivo
+                  {t('about.objectiveTitle')}
                 </h3>
                 <div className="bg-black/30 backdrop-blur-sm border border-[#0964ff]/20 rounded-xl p-8 hover:border-[#09dfff]/40 transition-all duration-300">
                   <p className="text-lg text-white leading-relaxed text-left">
-                    Entender el funcionamiento de tecnologías de software como freelance para eventualmente fundar un negocio en torno a la tecnología.
+                    {t('about.objective')}
                   </p>
                 </div>
               </motion.div>

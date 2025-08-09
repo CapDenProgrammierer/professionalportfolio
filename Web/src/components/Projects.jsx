@@ -1,12 +1,14 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Github, ArrowDown } from 'lucide-react';
 import { useState } from 'react';
+import { useLanguage } from '../contexts/LanguageContext';
 import ProyectoPokemon from '../assets/ProyectoPokemon.jpg';
 import ProyectoJuego from '../assets/ProyectoJuego.png';
 import ProyectoMultas from '../assets/ProyectoMultas.jpg';
 import ProyectoMusica from '../assets/ProyectoMusica.jpg';
 
 const Projects = () => {
+  const { t } = useLanguage();
   const [currentProject, setCurrentProject] = useState(0);
   const [selectedProject, setSelectedProject] = useState(null);
 
@@ -14,70 +16,70 @@ const Projects = () => {
   const projects = [
     {
       id: 1,
-      title: 'Juego de Pokemon en Línea',
-      subtitle: 'Simulador de Batallas Pokemon',
+      title: t('projects.pokemon.title'),
+      subtitle: t('projects.pokemon.subtitle'),
       image: ProyectoPokemon,
-      description: 'Juego de Pokemon sin licencia de Nintendo en línea para simular batallas de pokemon. Una experiencia interactiva que permite a los usuarios crear equipos personalizados y enfrentarse en batallas estratégicas simuladas, recreando la emoción de los combates Pokemon clásicos.',
+      description: t('projects.pokemon.description'),
       technologies: ['JavaScript', 'HTML', 'MongoDB'],
       features: [
-        'Agregar usuarios para batallas',
-        'Crear equipo de Pokemones',
-        'Batalla Pokemon simulada'
+        t('projects.pokemon.features.0'),
+        t('projects.pokemon.features.1'),
+        t('projects.pokemon.features.2')
       ],
       liveUrl: '#',
       githubUrl: 'https://github.com/KendallCa05/PokemonGame'
     },
     {
       id: 2,
-      title: 'Kana Defence',
-      subtitle: 'Juego de tipo Tower Defence',
+      title: t('projects.kana.title'),
+      subtitle: t('projects.kana.subtitle'),
       image: ProyectoJuego,
-      description: 'Juego de defensa donde tienes que evitar que el enemigo (las Kanas) lleguen al objetivo colocando defensas. Un desafiante tower defense que pone a prueba tu estrategia y planificación, donde cada decisión cuenta para proteger tu base de las oleadas enemigas.',
+      description: t('projects.kana.description'),
       technologies: ['Godot', 'C#'],
       features: [
-        'Construir defensas de distintas clases',
-        'Economía de puntos por kill',
-        'Contador de puntuación'
+        t('projects.kana.features.0'),
+        t('projects.kana.features.1'),
+        t('projects.kana.features.2')
       ],
       liveUrl: '#',
       githubUrl: 'https://github.com/CapDenProgrammierer/ProyectoJuego'
     },
     {
       id: 3,
-      title: 'Sistema de Multas',
-      subtitle: 'Sistema integral de gestión de multas de tránsito',
+      title: t('projects.multas.title'),
+      subtitle: t('projects.multas.subtitle'),
       image: ProyectoMultas,
-      description: 'Sistema completo de gestión de multas de tránsito desarrollado como proyecto de la universidad, diseñado para digitalizar y modernizar el proceso de administración de infracciones vehiculares. La aplicación permite tanto a ciudadanos como a autoridades gestionar de manera eficiente todo el ciclo de vida de las multas, desde su creación hasta su resolución.',
+      description: t('projects.multas.description'),
       technologies: ['ASP.NET', 'C#', 'SQL Server', 'HTML', 'CSS', 'JavaScript'],
       features: [
-        'Registro y gestión completa de usuarios ciudadanos y oficiales',
-        'Sistema de roles con diferentes niveles de acceso y permisos',
-        'Creación, asignación y seguimiento detallado de multas por cédula',
-        'Generación automática de reportes y estados de cuenta de multas',
-        'Mapa interactivo de calor mostrando concentración de infracciones',
-        'Sistema de seguridad con autenticación por lector de identidad',
-        'Panel administrativo para gestión de oficiales y estadísticas',
-        'Historial completo de transacciones y auditoría del sistema'
+        t('projects.multas.features.0'),
+        t('projects.multas.features.1'),
+        t('projects.multas.features.2'),
+        t('projects.multas.features.3'),
+        t('projects.multas.features.4'),
+        t('projects.multas.features.5'),
+        t('projects.multas.features.6'),
+        t('projects.multas.features.7')
       ],
       liveUrl: '#',
       githubUrl: 'https://github.com/NotFabianML/Proyecto2-GestionDeMultas-Frontend'
     },
     {
       id: 4,
-      title: 'Proyecto Beatz',
-      subtitle: 'Aplicación completa de reproducción de música',
+      title: t('projects.beatz.title'),
+      subtitle: t('projects.beatz.subtitle'),
       image: ProyectoMusica,
-      description: 'Aplicación de streaming de música desarrollada como proyecto académico, que ofrece una experiencia completa de reproducción musical. Permite a los usuarios gestionar su biblioteca personal de música, crear colecciones organizadas y disfrutar de reproducción de alta calidad con todas las funcionalidades de un reproductor profesional.',
+      description: t('projects.beatz.description'),
       technologies: ['React', 'C#', 'ASP.NET', 'SQL Server', 'JavaScript', 'MP3 Player API'],
       features: [
-        'Sistema de usuarios con perfiles personalizados y bibliotecas individuales',
-        'Carga y gestión de archivos de música en múltiples formatos',
-        'Creación y organización de playlists personalizadas',
-        'Gestión completa de álbumes con metadatos y artwork',
-        'Reproductor de música con controles avanzados y audio real',
-        'Sistema de búsqueda y filtrado por artista, álbum y género',
-        'Interfaz intuitiva y responsive para una experiencia óptima',
-        'Almacenamiento seguro y organizado de la biblioteca musical'
+        t('projects.beatz.features.0'),
+        t('projects.beatz.features.1'),
+        t('projects.beatz.features.2'),
+        t('projects.beatz.features.3'),
+        t('projects.beatz.features.4'),
+        t('projects.beatz.features.5'),
+        t('projects.beatz.features.6'),
+        t('projects.beatz.features.7')
       ],
       liveUrl: '#',
       githubUrl: 'https://github.com/CapDenProgrammierer/MusicApp'
@@ -115,10 +117,10 @@ const Projects = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-8 bg-gradient-to-r from-[#09dfff] to-[#0964ff] bg-clip-text text-transparent">
-            Proyectos
+            {t('projects.title')}
           </h2>
           <p className="text-lg text-gray-300 max-w-2xl mx-auto">
-            Una muestra de los proyectos en los que he trabajado, mostrando mi experiencia y habilidades técnicas.
+            {t('projects.description')}
           </p>
         </motion.div>
 
@@ -161,7 +163,7 @@ const Projects = () => {
                   <div className="absolute inset-0 bg-black/40 opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                     <div className="text-white text-center">
                       <ArrowDown size={48} className="mx-auto mb-4 text-[#09dfff]" />
-                      <p className="text-lg font-semibold">Ver Detalles</p>
+                      <p className="text-lg font-semibold">{t('projects.seeDetails')}</p>
                     </div>
                   </div>
                 </div>
@@ -241,7 +243,7 @@ const Projects = () => {
                   </p>
                   
                   <div className="mb-8">
-                    <h4 className="text-lg font-semibold text-white mb-3">Descripción</h4>
+                    <h4 className="text-lg font-semibold text-white mb-3">{t('projects.descriptionLabel')}</h4>
                     <p className="text-gray-300 leading-relaxed">
                       {selectedProject.description}
                     </p>
@@ -249,7 +251,7 @@ const Projects = () => {
 
                   {/* Technologies */}
                   <div className="mb-8">
-                    <h4 className="text-lg font-semibold text-white mb-3">Tecnologías</h4>
+                    <h4 className="text-lg font-semibold text-white mb-3">{t('projects.technologies')}</h4>
                     <div className="flex flex-wrap gap-2">
                       {selectedProject.technologies.map((tech, index) => (
                         <span
@@ -271,14 +273,14 @@ const Projects = () => {
                       className="flex items-center gap-2 bg-gradient-to-r from-[#09dfff] to-[#0964ff] text-black px-6 py-3 rounded-lg font-semibold hover:shadow-lg hover:shadow-[#09dfff]/30 transition-all duration-300"
                     >
                       <Github size={18} />
-                      Ver Código
+                      {t('projects.seeCode')}
                     </a>
                   </div>
                 </div>
 
                 {/* Right Column - Features */}
                 <div>
-                  <h4 className="text-lg font-semibold text-white mb-4">Características Principales</h4>
+                  <h4 className="text-lg font-semibold text-white mb-4">{t('projects.features')}</h4>
                   <ul className="space-y-3">
                     {selectedProject.features.map((feature, index) => (
                       <motion.li
