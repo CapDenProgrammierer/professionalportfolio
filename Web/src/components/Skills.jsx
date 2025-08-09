@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { User, Lightbulb, Users, Target } from 'lucide-react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 // Importaciones de iconos de tecnologías
 import ReactIcon from '../assets/icons/react-icon.svg';
@@ -13,6 +14,8 @@ import SpringBootIcon from '../assets/icons/springboot-icon.svg';
 import MySqlIcon from '../assets/icons/mysql-icon.svg';
 
 const Skills = () => {
+  const { t } = useLanguage();
+  
   const technologies = [
     { 
       name: 'React', 
@@ -54,19 +57,19 @@ const Skills = () => {
 
   const softSkills = [
     {
-      title: 'Ágil resolvedor de problemas',
+      title: t('skills.softSkills.problemSolver.title'),
       icon: <Lightbulb size={32} />,
-      description: 'Capacidad para identificar y resolver desafíos técnicos de manera eficiente'
+      description: t('skills.softSkills.problemSolver.description')
     },
     {
-      title: 'Trabajo solo y en equipo',
+      title: t('skills.softSkills.teamwork.title'),
       icon: <Users size={32} />,
-      description: 'Versatilidad para desempeñarme tanto de forma independiente como colaborativa'
+      description: t('skills.softSkills.teamwork.description')
     },
     {
-      title: 'Comprometido a la ayuda mutua',
+      title: t('skills.softSkills.help.title'),
       icon: <Target size={32} />,
-      description: 'Enfocado en crear un ambiente de apoyo y crecimiento conjunto'
+      description: t('skills.softSkills.help.description')
     }
   ];
 
@@ -82,7 +85,7 @@ const Skills = () => {
             viewport={{ once: true }}
             className="text-4xl md:text-5xl font-bold mb-8 bg-gradient-to-r from-[#09dfff] to-[#0964ff] bg-clip-text text-transparent"
           >
-            Habilidades
+            {t('skills.title')}
           </motion.h2>
         </div>
 
@@ -96,15 +99,14 @@ const Skills = () => {
             className="mb-16"
           >
             <h3 className="text-2xl md:text-3xl font-bold mb-6 text-[#09dfff] text-left">
-              Perfil Profesional
+              {t('skills.profile.title')}
             </h3>              <div className="bg-black/30 backdrop-blur-sm border border-[#0964ff]/20 rounded-xl p-8 hover:border-[#09dfff]/40 transition-all duration-300">
               <div className="flex items-start gap-4">
                 <div className="text-[#ff2909] mt-1">
                   <User size={28} />
                 </div>
                 <p className="text-lg text-white leading-relaxed">
-                  Desarrollador de Backend y Frontend, diseñador de sistemas e implementación de base de datos. 
-                  Experiencia con tecnologías de React, SQL Server, Godot, Unity C#, C++, Java, Spring Boot y MySQL.
+                  {t('skills.profile.description')}
                 </p>
               </div>
             </div>
@@ -119,7 +121,7 @@ const Skills = () => {
             className="mb-16"
           >
             <h3 className="text-2xl md:text-3xl font-bold mb-8 text-[#09dfff] text-center">
-              Tecnologías
+              {t('skills.technologies')}
             </h3>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
               {technologies.map((tech, index) => (
@@ -160,7 +162,7 @@ const Skills = () => {
             viewport={{ once: true }}
           >
             <h3 className="text-2xl md:text-3xl font-bold mb-8 text-[#09dfff] text-center">
-              Habilidades Blandas
+              {t('skills.softSkills.title')}
             </h3>
             <div className="grid md:grid-cols-3 gap-8">
               {softSkills.map((skill, index) => (

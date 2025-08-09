@@ -2,16 +2,19 @@ import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { motion } from 'framer-motion';
 import LogoPersonal from '../assets/LogoPersonal.svg';
+import LanguageSwitch from './LanguageSwitch';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { t } = useLanguage();
 
   const menuItems = [
-    { name: 'Inicio', href: '#hero' },
-    { name: 'Sobre Mí', href: '#about' },
-    { name: 'Habilidades', href: '#skills' },
-    { name: 'Proyectos', href: '#projects' },
-    { name: 'Contacto', href: '#contact' }
+    { name: t('nav.home'), href: '#hero' },
+    { name: t('nav.about'), href: '#about' },
+    { name: t('nav.skills'), href: '#skills' },
+    { name: t('nav.projects'), href: '#projects' },
+    { name: t('nav.contact'), href: '#contact' }
   ];
 
   return (
@@ -35,23 +38,27 @@ const Header = () => {
           </motion.div>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex space-x-8">
-            {menuItems.map((item) => (
-              <motion.a
-                key={item.name}
-                href={item.href}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="text-white hover:text-[#ff2909] transition-colors duration-300 font-medium relative group"
-              >
-                {item.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-[#09dfff] to-[#0964ff] transition-all duration-300 group-hover:w-full"></span>
-              </motion.a>
-            ))}
+          <div className="hidden md:flex items-center space-x-6">
+            <div className="flex space-x-8">
+              {menuItems.map((item) => (
+                <motion.a
+                  key={item.name}
+                  href={item.href}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="text-white hover:text-[#ff2909] transition-colors duration-300 font-medium relative group"
+                >
+                  {item.name}
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-[#09dfff] to-[#0964ff] transition-all duration-300 group-hover:w-full"></span>
+                </motion.a>
+              ))}
+            </div>
+            <LanguageSwitch />
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="md:hidden">
+          <div className="md:hidden flex items-center space-x-4">
+            <LanguageSwitch />
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="text-white hover:text-[#ff2909] transition-colors"
