@@ -1,17 +1,55 @@
 import { motion } from 'framer-motion';
 import { User, Lightbulb, Users, Target } from 'lucide-react';
 
+// Importaciones de iconos de tecnologías
+import ReactIcon from '../assets/icons/react-icon.svg';
+import SqlServerIcon from '../assets/icons/sqlserver-icon.svg';
+import GodotIcon from '../assets/icons/godot-icon.svg';
+import UnityIcon from '../assets/icons/unity-icon.svg';
+import CSharpIcon from '../assets/icons/csharp-icon.svg';
+import CppIcon from '../assets/icons/cpp-icon.svg';
+import JavaIcon from '../assets/icons/java-icon.svg';
+import SpringBootIcon from '../assets/icons/springboot-icon.svg';
+import MySqlIcon from '../assets/icons/mysql-icon.svg';
+
 const Skills = () => {
   const technologies = [
-    { name: 'React', icon: null }, // Espacio para icono
-    { name: 'SQL Server', icon: null }, // Espacio para icono
-    { name: 'Godot', icon: null }, // Espacio para icono
-    { name: 'Unity', icon: null }, // Espacio para icono
-    { name: 'C#', icon: null }, // Espacio para icono
-    { name: 'C++', icon: null }, // Espacio para icono
-    { name: 'Java', icon: null }, // Espacio para icono
-    { name: 'Spring Boot', icon: null }, // Espacio para icono
-    { name: 'MySQL', icon: null } // Espacio para icono
+    { 
+      name: 'React', 
+      icon: ReactIcon
+    }, 
+    { 
+      name: 'SQL Server', 
+      icon: SqlServerIcon
+    },
+    { 
+      name: 'Godot', 
+      icon: GodotIcon
+    },
+    { 
+      name: 'Unity', 
+      icon: UnityIcon
+    },
+    { 
+      name: 'C#', 
+      icon: CSharpIcon
+    },
+    { 
+      name: 'C++', 
+      icon: CppIcon
+    },
+    { 
+      name: 'Java', 
+      icon: JavaIcon
+    },
+    { 
+      name: 'Spring Boot', 
+      icon: SpringBootIcon
+    },
+    { 
+      name: 'MySQL', 
+      icon: MySqlIcon
+    }
   ];
 
   const softSkills = [
@@ -94,11 +132,19 @@ const Skills = () => {
                   whileHover={{ scale: 1.05 }}
                   className="bg-black/50 backdrop-blur-sm border border-[#0964ff]/20 rounded-xl p-6 text-center hover:border-[#09dfff]/40 transition-all duration-300 group"
                 >
-                  {/* Espacio reservado para icono */}
+                  {/* Icono de tecnología */}
                   <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-r from-[#09dfff]/20 to-[#0964ff]/20 rounded-lg flex items-center justify-center group-hover:from-[#09dfff]/30 group-hover:to-[#0964ff]/30 transition-all duration-300">
-                    <div className="text-2xl text-[#ff2909] font-bold">
-                      {tech.name.charAt(0)}
-                    </div>
+                    {tech.icon ? (
+                      <img 
+                        src={tech.icon} 
+                        alt={`${tech.name} icon`}
+                        className="w-10 h-10 object-contain"
+                      />
+                    ) : (
+                      <div className="text-2xl text-[#ff2909] font-bold">
+                        {tech.name.charAt(0)}
+                      </div>
+                    )}
                   </div>
                   <h4 className="text-white font-semibold text-sm">{tech.name}</h4>
                 </motion.div>
